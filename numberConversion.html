@@ -15,7 +15,7 @@
      * 2. if input is empty (return 0)
      *
      * 1. If input is number in double quotes, float number (return number)
-     * 2. if input is in string (return NaN)
+     * 2. if input is in string (return 0)
      */
 
     function numberConversion(value) {
@@ -25,9 +25,15 @@
       if (value === "") {
         return 0;
       }
+      if (value === "true" || value === true) {
+        return 1;
+      }
       const input = parseInt(value);
+      if (isNaN(input) === true) {
+        return 0;
+      }
       return input;
     }
-    console.log(numberConversion("26.34"));
+    console.log(numberConversion("-15e1"));
   </script>
 </html>
