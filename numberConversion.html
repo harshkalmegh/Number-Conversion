@@ -9,31 +9,52 @@
   <body></body>
   <script>
     /**
+     * Create a function to convert input into a Number
+
+1- If input is null, undefined or blank string, then return 0
+2- If input is not a valid number (NaN), then return 0
+2- If input is a string number ("2"), convert into a Number . For example - "2" => 2 
+3- If input is a number then return number 
+    */
+
+    /**
      * Algorithm
      * Edgecase
-     * 1. if input is undefined or null (return Enter Proper Value)
-     * 2. if input is empty (return 0)
+     * 1. if input is undefined or null or blank string or Infinity(return 0)
      *
      * 1. If input is number in double quotes, float number (return number)
      * 2. if input is in string (return 0)
+     * 3. if input is true (return 1)
+     * 4. convert input into number by parseFloat Method and float number upto 2 digit by to fixed
+     * 5. if input is not a number (return 0)
+     *
      */
 
+    /*
+     * Study , what is a difference value in Truthy & Falsy value
+
+* Create a function to return whether the input is a Truthy or falsy value
+     */
+
+    // float upto 2 decimal
+    // 1. toFixed
+    // 2. Math round
+
+    // 3. toPrecision
     function numberConversion(value) {
-      if (value === undefined || value === null) {
-        return "Enter Proper Value";
-      }
-      if (value === "") {
+      if (value === !value || isFinite(value) === false) {
         return 0;
       }
       if (value === "true" || value === true) {
         return 1;
       }
-      const input = parseInt(value);
-      if (isNaN(input) === true) {
+      const input = parseFloat(value);
+      const inputNew = Math.round(input * 100) / 100;
+      if (isNaN(inputNew) === true) {
         return 0;
       }
-      return input;
+      return inputNew;
     }
-    console.log(numberConversion("-15e1"));
+    console.log(numberConversion(55.48745));
   </script>
 </html>
