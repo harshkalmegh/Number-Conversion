@@ -25,7 +25,7 @@
      * 1. If input is number in double quotes, float number (return number)
      * 2. if input is in string (return 0)
      * 3. if input is true (return 1)
-     * 4. convert input into number by parseFloat Method and float number upto 2 digit by to fixed
+     * 4. convert input into number by parseFloat Method and float number upto 2 digit by Math round method
      * 5. if input is not a number (return 0)
      *
      */
@@ -42,19 +42,19 @@
 
     // 3. toPrecision
     function numberConversion(value) {
-      if (value === !value || isFinite(value) === false) {
+      if (!value || !isFinite(value)) {
         return 0;
       }
-      if (value === "true" || value === true) {
-        return 1;
-      }
+
       const input = parseFloat(value);
-      const inputNew = Math.round(input * 100) / 100;
-      if (isNaN(inputNew) === true) {
+
+      if (isNaN(input)) {
         return 0;
       }
+
+      const inputNew = Math.round(input * 100) / 100;
       return inputNew;
     }
-    console.log(numberConversion(55.48745));
+    console.log(numberConversion("552.259566546451564"));
   </script>
 </html>
